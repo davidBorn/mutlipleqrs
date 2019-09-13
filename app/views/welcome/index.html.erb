@@ -1,0 +1,15 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<div class = "grid">
+    <% number = @number_of_tables %>
+        <% while number > 0 do %>
+        <div>
+            <%= raw @qrcode.new(number.to_s).as_html %>
+            <%= 'Table ' +  number.to_s %>
+            <% number = number - 1 %>
+        </div>
+    <%end%>
+</div>
+
+<%= link_to 'print', welcome_index_path , :onclick => 'window.print();return false;'%>
