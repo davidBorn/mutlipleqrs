@@ -1,15 +1,23 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
 
 <div class = "grid">
     <% number = @number_of_tables %>
         <% while number > 0 do %>
         <div>
-            <%= raw @qrcode.new(number.to_s).as_html %>
-            <%= 'Table ' +  number.to_s %>
+            <% qrgenerate(number.to_s) %>
+            <% filename = ('qrcodepng' + number.to_s + '.png').to_s %>
+                <div>
+                    <%= image_tag filename%>
+                </div>
+                <div>
+                    <%= 'Table ' +  number.to_s %>
+                </div>
             <% number = number - 1 %>
         </div>
     <%end%>
 </div>
+
+
+
 
 <%= link_to 'print', welcome_index_path , :onclick => 'window.print();return false;'%>
